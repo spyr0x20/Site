@@ -102,12 +102,14 @@
     }
 
     /* ✅ Responsive adjustments */
-    @media (max-width: 768px) {
-      nav a {
-        display: block;
-        margin: 0.5rem 0;
-        font-size: 1.25rem;
+         @media (max-width: 768px) {
+        nav a {
+          display: inline; /* keep them inline! */
+          margin: 0 0.5rem; /* horizontal spacing */
+          font-size: 1.25rem;
+        }
       }
+
 
       main h1 {
         font-size: 2.2rem;
