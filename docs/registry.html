@@ -3,42 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>JJ & Adri's Registry</title>
+  <title>JJ & Adri's Wedding</title>
   <style>
-      @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-.animate-fadeIn {
-  animation: fadeIn 1s ease forwards;
-  opacity: 0; /* start hidden */
-}
+    .animate-fadeIn {
+      animation: fadeIn 1s ease forwards;
+      opacity: 0; /* start hidden */
+    }
 
-/* delays */
-.delay-300 {
-  animation-delay: 0.3s;
-}
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-600 { animation-delay: 0.6s; }
+    .delay-900 { animation-delay: 0.9s; }
+    .delay-1200 { animation-delay: 1.2s; }
 
-.delay-600 {
-  animation-delay: 0.6s;
-}
-
-.delay-900 {
-  animation-delay: 0.9s;
-}
-
-.delay-1200 {
-  animation-delay: 1.2s;
-}
-
-    /* Reset some default margin/padding */
+    /* Reset & Base Styles */
     * {
       margin: 0;
       padding: 0;
@@ -48,7 +37,7 @@
     html, body {
       height: 100%;
       background-color: #2b1b14; /* blackish brown */
-      color: #FFD700; /* golden text */
+      color: #FFD700; /* gold */
       font-family: serif;
       display: flex;
       flex-direction: column;
@@ -64,22 +53,22 @@
     nav a {
       color: #FFD700;
       font-weight: 600;
-      font-size: 1.125rem; /* ~18px */
+      font-size: 1.125rem;
       margin: 0 1rem;
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
     nav a:hover {
-      color: #18392B; /* green */
+      color: #18392B; /* green hover */
     }
 
     main {
-      flex: 1; /* fill available vertical space */
+      flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center; /* vertical center */
-      align-items: center; /* horizontal center */
+      justify-content: center;
+      align-items: center;
       padding: 2rem;
       text-align: center;
     }
@@ -95,8 +84,9 @@
     }
 
     main img {
-      max-height: 50vh; /* max 50% of viewport height */
-      width: auto;
+      max-width: 90%;
+      height: auto;
+      max-height: 50vh;
       border-radius: 0.75rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.5);
       margin-top: 1rem;
@@ -110,6 +100,33 @@
       text-align: center;
       padding: 1rem 0;
     }
+
+    /* ✅ Responsive adjustments */
+         @media (max-width: 768px) {
+        nav a {
+          display: inline; /* keep them inline! */
+          margin: 0 0.5rem; /* horizontal spacing */
+          font-size: 1.25rem;
+        }
+      }
+
+
+      main h1 {
+        font-size: 2.2rem;
+      }
+
+      main p {
+        font-size: 1.2rem;
+      }
+
+      main img {
+        max-height: 30vh;
+      }
+
+      #countdown {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -121,12 +138,9 @@
     <a href="registry.html">Registry</a>
   </nav>
 
-<ul>
-  <li> Table<href="https://www.amazon.com/Foldable-Adjustable-Portable-Perfect-Wedding/dp/B0DS2VDNS5/ref=asc_df_B0DS2VDNS5?hvadid=80814302511780&hvnetw=s&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=&hvlocphy=76642&hvtargid=pla-4584413770578170">
-  <li> Hi
-  <li> Lo
-  <li> YEs
-</ul>
+  <main>
+    
+  </main>
 
 </body>
 </html>
