@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wedding Registry</title>
+  <script 
+  src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&components=hosted-buttons&enable-funding=venmo&currency=USD">
+  </script>
   <style>
     /* Animations */
     @keyframes fadeIn {
@@ -139,7 +142,13 @@
   </nav>
 
   <main>
-    
+     <div id="paypal-container-NMCNDL3H4DK4C"></div>
+      <script>
+          paypal.HostedButtons({
+          hostedButtonId: "NMCNDL3H4DK4C",
+            }).render("#paypal-container-NMCNDL3H4DK4C")
+</script>
+
   </main>
 
 </body>
