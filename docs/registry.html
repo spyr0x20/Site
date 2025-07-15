@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wedding Registry</title>
   <script 
-  src="https://www.paypal.com/sdk/js?client-id=BAAEQtapUIf5t05di7-3Tl651fjgdJ-FfO7_6GyJ5USRH6Fy-nC_bLvD_AFkJRAnO0QdlRU6vkUEqgdfxM&components=hosted-buttons&enable-funding=venmo&currency=USD">
+    src="https://www.paypal.com/sdk/js?client-id=BAAEQtapUIf5t05di7-3Tl651fjgdJ-FfO7_6GyJ5USRH6Fy-nC_bLvD_AFkJRAnO0QdlRU6vkUEqgdfxM&components=hosted-buttons&enable-funding=venmo&currency=USD">
   </script>
   <style>
-    /* Animations */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -22,7 +21,7 @@
 
     .animate-fadeIn {
       animation: fadeIn 1s ease forwards;
-      opacity: 0; /* start hidden */
+      opacity: 0;
     }
 
     .delay-300 { animation-delay: 0.3s; }
@@ -30,7 +29,6 @@
     .delay-900 { animation-delay: 0.9s; }
     .delay-1200 { animation-delay: 1.2s; }
 
-    /* Reset & Base Styles */
     * {
       margin: 0;
       padding: 0;
@@ -39,8 +37,8 @@
 
     html, body {
       height: 100%;
-      background-color: #2b1b14; /* blackish brown */
-      color: #FFD700; /* gold */
+      background-color: #2b1b14;
+      color: #FFD700;
       font-family: serif;
       display: flex;
       flex-direction: column;
@@ -63,7 +61,7 @@
     }
 
     nav a:hover {
-      color: #18392B; /* green hover */
+      color: #18392B;
     }
 
     main {
@@ -86,16 +84,6 @@
       margin-bottom: 1rem;
     }
 
-    main img {
-      max-width: 90%;
-      height: auto;
-      max-height: 50vh;
-      border-radius: 0.75rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-      margin-top: 1rem;
-      margin-bottom: 2rem;
-    }
-
     footer {
       background-color: #3a2a21;
       color: #ccc;
@@ -104,15 +92,13 @@
       padding: 1rem 0;
     }
 
-    /* ✅ Responsive adjustments */
-         @media (max-width: 768px) {
-        nav a {
-          display: inline; /* keep them inline! */
-          margin: 0 0.5rem; /* horizontal spacing */
-          font-size: 1.25rem;
-        }
+    /* ✅ Responsive nav fix */
+    @media (max-width: 768px) {
+      nav a {
+        display: inline; 
+        margin: 0 0.5rem;
+        font-size: 1.25rem;
       }
-
 
       main h1 {
         font-size: 2.2rem;
@@ -121,14 +107,15 @@
       main p {
         font-size: 1.2rem;
       }
+    }
 
-      main img {
-        max-height: 30vh;
-      }
-
-      #countdown {
-        font-size: 1.5rem;
-      }
+    /* Example: container for multiple buttons side by side */
+    .paypal-buttons {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
     }
   </style>
 </head>
@@ -142,11 +129,26 @@
   </nav>
 
   <main>
-     <div id="paypal-container-NMCNDL3H4DK4C"></div>
+    <h1 class="animate-fadeIn">Send a Gift</h1>
+    <p class="animate-fadeIn delay-300">Thank you for your love and support!</p>
+
+    <!-- ✅ Example: multiple PayPal buttons side by side -->
+    <div class="paypal-buttons">
+      <div id="paypal-container-NMCNDL3H4DK4C"></div>
+      <!-- If you have a second button, add here:
+      <div id="paypal-container-SECONDID"></div>
+      -->
+    </div>
+
     <script>
       paypal.HostedButtons({
         hostedButtonId: "NMCNDL3H4DK4C",
-      }).render("#paypal-container-NMCNDL3H4DK4C")
+      }).render("#paypal-container-NMCNDL3H4DK4C");
+
+      // Add second button if needed:
+      // paypal.HostedButtons({
+      //   hostedButtonId: "SECONDID",
+      // }).render("#paypal-container-SECONDID");
     </script>
   </main>
 
