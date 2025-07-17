@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JJ & Adri's Wedding</title>
+  <link rel="icon" href="/assets/figaro.png">
   <style>
     /* Animations */
     @keyframes fadeIn {
@@ -36,8 +37,8 @@
 
     html, body {
       height: 100%;
-      background-color: #2b1b14; /* blackish brown */
-      color: #FFD700; /* gold */
+      background-color: #FCE4B3; /* beige */
+      color: #000000; /* black */
       font-family: serif;
       display: flex;
       flex-direction: column;
@@ -45,13 +46,13 @@
     }
 
     nav {
-      background-color: #3a2a21;
+      background-color: #ABAA8B;
       padding: 1rem 0;
       text-align: center;
     }
 
     nav a {
-      color: #FFD700;
+      color: #3a2a21;
       font-weight: 600;
       font-size: 1.125rem;
       margin: 0 1rem;
@@ -78,14 +79,8 @@
       margin-bottom: 0.5rem;
     }
 
-    main h2 {
-      font-size: 2rem;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-
     main p {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       margin-bottom: 1rem;
     }
 
@@ -107,20 +102,22 @@
       padding: 1rem 0;
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      nav a {
-        display: inline;
-        margin: 0 0.5rem;
-        font-size: 1.25rem;
+    /* ✅ Responsive adjustments */
+         @media (max-width: 768px) {
+        nav a {
+          display: inline; /* keep them inline! */
+          margin: 0 0.5rem; /* horizontal spacing */
+          font-size: 1.25rem;
+        }
       }
+
 
       main h1 {
         font-size: 2.2rem;
       }
 
       main p {
-        font-size: 1rem;
+        font-size: 1.2rem;
       }
 
       main img {
