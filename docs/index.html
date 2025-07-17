@@ -128,6 +128,36 @@
         font-size: 1.5rem;
       }
     }
+
+    #leaves
+    .leaf {
+      position: fixed;
+      z-index: 0;
+      opacity: 0.2;
+      transition: transform 3s ease-in-out;
+    }
+    
+    .leaf img {
+      width: 50px;
+      height: auto;
+      pointer-events: none;
+    }
+    
+    .leaf1 { top: 10%; left: 5%; transform: rotate(-20deg); }
+    .leaf2 { top: 60%; right: 8%; transform: rotate(15deg); }
+    .leaf3 { bottom: 10%; left: 12%; transform: rotate(-10deg); }
+    .leaf4 { bottom: 20%; right: 15%; transform: rotate(25deg); }
+    
+    /* Optional: Animate leaves to gently sway */
+    @keyframes sway {
+      0% { transform: rotate(-20deg); }
+      50% { transform: rotate(20deg); }
+      100% { transform: rotate(-20deg); }
+    }
+    
+    .leaf:hover {
+      animation: sway 3s infinite ease-in-out;
+    }
   </style>
 </head>
 <body>
@@ -179,4 +209,12 @@
   </script>
 
 </body>
+
+  #leaf divs
+<!-- Decorative Leaves -->
+<div class="leaf leaf1"><img src="assets/leaf1.png" alt="Leaf" /></div>
+<div class="leaf leaf2"><img src="assets/leaf2.png" alt="Leaf" /></div>
+<div class="leaf leaf3"><img src="assets/leaf3.png" alt="Leaf" /></div>
+<div class="leaf leaf4"><img src="assets/leaf4.png" alt="Leaf" /></div>
+  
 </html>
