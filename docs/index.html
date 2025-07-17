@@ -35,6 +35,46 @@
       box-sizing: border-box;
     }
 
+        /* Floating leaves */
+    .floating-leaf {
+      position: fixed;
+      width: 80px;
+      height: 80px;
+      background-image: url('https://https://static.vecteezy.com/system/resources/thumbnails/026/775/251/small_2x/watercolor-natural-leaf-ai-generative-free-png.png ');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.15;
+      z-index: -1;
+      pointer-events: none;
+      animation: float 6s ease-in-out infinite;
+    }>
+
+    .leaf1 { top: 10%; left: 10%; animation-duration: 8s; }
+    .leaf2 { top: 30%; left: 70%; animation-duration: 6s; }
+    .leaf3 { top: 60%; left: 40%; animation-duration: 10s; }
+    .leaf4 { top: 80%; left: 80%; animation-duration: 7s; }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(10deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    /* Falling leaves */
+    .falling-leaf {
+      position: fixed;
+      top: -50px;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://static.vecteezy.com/system/resources/thumbnails/026/775/251/small_2x/watercolor-natural-leaf-ai-generative-free-png.png ');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.1;
+      z-index: -1;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
     html, body {
       height: 100%;
       background-color: #FCE4B3; /* beige */
