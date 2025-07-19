@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>JJ & Adri's Wedding</title>
-  <link rel="icon" href="/assets/figaro.png">
+  <title>Details</title>
+  <link rel="icon" href="assets/figaro.png" type="image/png">
   <style>
     /* Animations */
     @keyframes fadeIn {
@@ -35,6 +35,53 @@
       box-sizing: border-box;
     }
 
+    .background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /*background: url('https://wallpapers-clan.com/wp-content/uploads/2024/06/minimalist-foliage-leaves-frame-desktop-wallpaper-cover.jpg') center/cover no-repeat;*/
+
+      background: url('https://static.vecteezy.com/system/resources/previews/018/752/535/original/beautiful-watercolor-floral-leaves-background-free-vector.jpg') center/cover no-repeat;
+      opacity: 0.3;
+      z-index: 0;
+    }
+    
+    .leaf {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: url('https://static.vecteezy.com/system/resources/thumbnails/026/775/251/small_2x/watercolor-natural-leaf-ai-generative-free-png.png') no-repeat center/contain;
+      animation: fall 10s linear infinite;
+      opacity: 0; /* hidden by default */
+    }
+    
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;   /* hidden at start */
+      }
+      5% {
+        opacity: 1;   /* fade in quickly */
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;   /* fade out at bottom */
+      }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      background: rgba(252, 228, 179, 0.85);
+      max-width: 600px;
+      margin: 50px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }    
+
     html, body {
       height: 100%;
       background-color: #FCE4B3; /* beige */
@@ -43,6 +90,21 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('assets/leaf.jpg');
+      background-repeat: repeat;
+      background-size: 300px;
+      opacity: 0.15;
+      z-index: -2;
+      filter: saturate(0.7) contrast(1.1);
     }
 
     nav {
@@ -130,15 +192,20 @@
     }
   </style>
 </head>
+  <div class="leaf" style="left: 20%; animation-delay: 0s;"></div>
+  <div class="leaf" style="left: 40%; animation-delay: 3s;"></div>
+  <div class="leaf" style="left: 60%; animation-delay: 6s;"></div>
+  <div class="leaf" style="left: 80%; animation-delay: 1.5s;"></div>
 <body>
 
+  <div class="background-overlay"></div>
+  <div class="content">
   <nav>
     <a href="index.html">Home</a>
     <a href="our-story.html">RSVP</a>
     <a href="gallery.html">Details</a>
     <a href="registry.html">Registry</a>
   </nav>
-
   <main>
 
     <h1 style="margin-bottom: 2rem;">Wedding Details & FAQs</h1>
