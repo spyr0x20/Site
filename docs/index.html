@@ -54,15 +54,20 @@
       height: 50px;
       background: url('https://static.vecteezy.com/system/resources/thumbnails/026/775/251/small_2x/watercolor-natural-leaf-ai-generative-free-png.png') no-repeat center/contain;
       animation: fall 10s linear infinite;
+      opacity: 0; /* hidden by default */
     }
+    
     @keyframes fall {
       0% {
         transform: translateY(-100px) rotate(0deg);
-        opacity: 1;
+        opacity: 0;   /* hidden at start */
+      }
+      5% {
+        opacity: 1;   /* fade in quickly */
       }
       100% {
         transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
+        opacity: 0;   /* fade out at bottom */
       }
     }
 
