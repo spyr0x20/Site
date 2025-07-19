@@ -47,24 +47,24 @@
       opacity: 0.3;
       z-index: 0;
     }
-
-      .leaf {
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        background: url('https://static.vecteezy.com/system/resources/thumbnails/026/775/251/small_2x/watercolor-natural-leaf-ai-generative-free-png.png') no-repeat center/contain;
-        animation: fall 10s linear infinite;
+    
+    .leaf {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: url('https://static.vecteezy.com/system/resources/thumbnails/026/775/251/small_2x/watercolor-natural-leaf-ai-generative-free-png.png') no-repeat center/contain;
+      animation: fall 10s linear infinite;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
       }
-      @keyframes fall {
-        0% {
-          transform: translateY(-100px) rotate(0deg);
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(100vh) rotate(360deg);
-          opacity: 0;
-        }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
       }
+    }
 
     .content {
       position: relative;
@@ -188,6 +188,10 @@
   </style>
 </head>
 <body>
+  <div class="leaf" style="left: 20%; animation-delay: 0s;"></div>
+  <div class="leaf" style="left: 40%; animation-delay: 3s;"></div>
+  <div class="leaf" style="left: 60%; animation-delay: 6s;"></div>
+  <div class="leaf" style="left: 80%; animation-delay: 1.5s;"></div>
   <div class="background-overlay"></div>
   <div class="content">
   <nav>
@@ -235,10 +239,7 @@
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
   </script>
-<div class="leaf" style="left: 20%; animation-delay: 0s;"></div>
-<div class="leaf" style="left: 40%; animation-delay: 3s;"></div>
-<div class="leaf" style="left: 60%; animation-delay: 6s;"></div>
-<div class="leaf" style="left: 80%; animation-delay: 1.5s;"></div>
+
 </body>
   
 </html>
