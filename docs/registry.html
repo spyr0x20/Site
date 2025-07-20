@@ -159,13 +159,33 @@
       margin-bottom: 2rem;
     }
 
-    footer {
-      background-color: #3a2a21;
-      color: #ccc;
-      font-size: 0.875rem;
-      text-align: center;
-      padding: 1rem 0;
+    /* Remove default list styles and spacing for all ordered lists */
+    ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
+    
+    /* Style all list items */
+    li {
+      margin: 1.5rem 0; /* add vertical spacing between items */
+    }
+    
+    /* Structure: each li wraps an image and text stacked vertically */
+    li > img,
+    li > a > img {
+      display: block;
+      max-width: 150px; /* adjust as needed */
+      margin: 0 auto; /* center image horizontally */
+    }
+    
+    /* Text under the image — make sure text is inside a block or p if needed */
+    li p {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+    }
+
 
     /* ✅ Responsive adjustments */
          @media (max-width: 768px) {
