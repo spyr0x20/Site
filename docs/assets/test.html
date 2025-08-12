@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registry</title>
+  <link rel="icon" href="assets/figaro.png" type="image/png">
+  <style>
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 1s ease forwards;
+      opacity: 0; /* start hidden */
+    }
+
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-600 { animation-delay: 0.6s; }
+    .delay-900 { animation-delay: 0.9s; }
+    .delay-1200 { animation-delay: 1.2s; }
+
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://static.vecteezy.com/system/resources/previews/018/752/535/original/beautiful-watercolor-floral-leaves-background-free-vector.jpg') center/cover no-repeat;
+      opacity: 0.3;
+      z-index: 0;
+    }
+    
+    .leaf {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: url('https://static.vecteezy.com/system/resources/thumbnails/026/775/251/small_2x/watercolor-natural-leaf-ai-generative-free-png.png') no-repeat center/contain;
+      animation: fall 10s linear infinite;
+      opacity: 0; /* hidden by default */
+    }
+    
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+      }
+      5% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      background: #ffefd0;
+      max-width: 600px;
+      margin: 50px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }    
+
+    html, body {
+      height: 100%;
+      background-color: #FCE4B3; /* beige */
+      color: #000000; /* black */
+      font-family: serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('assets/leaf.jpg');
+      background-repeat: repeat;
+      background-size: 300px;
+      opacity: 0.15;
+      z-index: -2;
+      filter: saturate(0.7) contrast(1.1);
+    }
+
+    nav {
+      background-color: #ABAA8B;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    nav a {
+      color: #3a2a21;
+      font-weight: 600;
+      font-size: 1.125rem;
+      margin: 0 1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #18392B; /* green hover */
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    main h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    main p {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    main img {
+      max-width: 90%;
+      height: auto;
+      max-height: 50vh;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Remove default list styles and spacing for all ordered lists */
+    ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    /* Style all list items */
+    li {
+      margin: 1.5rem 0;
+    }
+    
+    /* Structure: each li wraps an image and text stacked vertically */
+    li > img,
+    li > a > img {
+      display: block;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    /* Text under the image */
+    li p {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    /* ✅ Responsive adjustments */
+    @media (max-width: 768px) {
+      nav a {
+        display: inline;
+        margin: 0 0.5rem;
+        font-size: 1.25rem;
+      }
+
+      main h1 {
+        font-size: 2.2rem;
+      }
+
+      main p {
+        font-size: 1.2rem;
+      }
+
+      main img {
+        max-height: 30vh;
+      }
+
+      #countdown {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* === Registry Link Circle & "Click Here" Styling === */
+    .registry-link-container {
+      position: relative;
+      display: inline-block;
+      margin: 0 8px;
+    }
+
+    #registry-link {
+      color: #693C2F;
+      text-decoration: none;
+      padding: 8px 12px;
+      position: relative;
+      z-index: 2;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    #registry-link:hover {
+      color: #18392B;
+    }
+
+    /* Circle around the link */
+    #registry-link::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 105%;
+      height: 105%;
+      border: 2px solid #D4A59A;
+      border-radius: 50%;
+      box-shadow: 
+        0 0 0 2px rgba(255, 255, 255, 0.8),
+        0 0 8px rgba(212, 165, 154, 0.5);
+      z-index: -1;
+      animation: pulse 2s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.05);
+        opacity: 0.9;
+      }
+    }
+
+    /* "Click here" text */
+    .click-here {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: #D47A6B;
+      margin-left: 8px;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+      animation-delay: 1.4s;
+      display: inline-block;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .registry-link-container:hover #registry-link::before {
+      border-color: #C06F5E;
+      animation-duration: 1s;
+    }
+
+    .registry-link-container:hover .click-here {
+      color: #C06F5E;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-overlay"></div>
+  <div class="leaf" style="left: 20%; animation-delay: 0s;"></div>
+  <div class="leaf" style="left: 40%; animation-delay: 3s;"></div>
+  <div class="leaf" style="left: 60%; animation-delay: 6s;"></div>
+  <div class="leaf" style="left: 80%; animation-delay: 1.5s;"></div>
+
+  <div class="content">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="rsvp.html">RSVP</a>
+      <a href="details.html">Details</a>
+      <a href="registry.html">Registry</a>
+    </nav>
+    
+    <main>
+      <h1 style="margin-bottom: 40px;" class="animate-fadeIn">For those who are unsure what to get from the gift ideas:</h1>
+      
+      <style>
+        .pp-NMCNDL3H4DK4C {
+          text-align: center;
+          border: none;
+          border-radius: 0.25rem;
+          min-width: 11.625rem;
+          padding: 0 2rem;
+          height: 2.625rem;
+          font-weight: bold;
+          background-color: #FFD140;
+          color: #000000;
+          font-family: "Helvetica Neue", Arial, sans-serif;
+          font-size: 1rem;
+          line-height: 1.25rem;
+          cursor: pointer;
+        }
+      </style>
+      <form action="https://www.paypal.com/ncp/payment/NMCNDL3H4DK4C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+        <input class="pp-NMCNDL3H4DK4C" type="submit" value="Registry Fund" />
+        <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+        <section style="font-size: 0.75rem;"></section>
+      </form>
+      
+      <!-- Updated line with circle and "Click here" -->
+      <h1 class="animate-fadeIn">
+        Gift Ideas from the 
+        <span class="registry-link-container">
+          <a href="https://www.amazon.com/wedding/share/jjandadri" target="_blank" id="registry-link">
+            Registry
+          </a>
+          <span class="click-here">Click here</span>
+        </span>:
+      </h1>
+
+      <ol>
+        <li>
+          <a href="https://www.amazon.com/Ninja-DoubleStack-2-Basket-Compact-Renewed/dp/B0DQYQCGGJ?colid=1GN45H9T35Y8J&coliid=I1OB8VTBNBR6HG&sbo=GW1QB%2BmqAsHTPf1jTZRSDA%3D%3D" target="_blank">
+            <img src="assets/airfryer.jpg" alt="Double Stack Air Fryer">
+          </a>
+          <p>Double Stack Air Fryer</p>
+        </li>
+        <li>
+          <a href="https://www.amazon.com/Expandable-Hanging-Adjustable-Organizers-Organizer/dp/B0CB68KCBC?colid=1GN45H9T35Y8J&coliid=I16GXGTBI5HBO1&sbo=9ZOMT9Jm0JH%2Ft%2BWi68iDSA%3D%3D" target="_blank">
+            <img src="assets/hangingpotrack.jpg" alt="Hanging Pot Rack">
+          </a>
+          <p>Hanging Pot Rack</p>
+        </li>
+        <li>
+          <a href="https://www.amazon.com/dp/B00939I7EK?colid=1GN45H9T35Y8J&coliid=I2INNE2349HCP3&ref_=awr_guest_view_modal_pt" target="_blank">
+            <img src="https://m.media-amazon.com/images/I/81WPPmP+4mL._AC_SX679_.jpg" alt="Ninja Blender Set">
+          </a>
+          <p>Ninja Blender Set</p>
+        </li>
+        <li>
+          <a href="https://www.amazon.com/dp/B0BWHZJHPL?colid=1GN45H9T35Y8J&coliid=I3LUIILN486OT1&ref_=awr_guest_view_modal_pt" target="_blank">
+            <img src="https://m.media-amazon.com/images/I/717Bh1wcU5L.__AC_SY445_SX342_QL70_FMwebp_.jpg" alt="Ice Maker">
+          </a>
+          <p>Ice Maker</p>
+        </li>
+      </ol>
+
+      <p class="animate-fadeIn delay-300">Thank you for your love and support!</p>
+    </main>
+  </div>
+
+</body>
+</html>
