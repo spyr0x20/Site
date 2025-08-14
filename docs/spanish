@@ -1,1 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Details</title>
+  <link rel="icon" href="assets/figaro.png" type="image/png">
+  <style>
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn { animation: fadeIn 1s ease forwards; opacity: 0; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-600 { animation-delay: 0.6s; }
+    .delay-900 { animation-delay: 0.9s; }
+    .delay-1200 { animation-delay: 1.2s; }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .background-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: url('https://static.vecteezy.com/system/resources/previews/018/752/535/original/beautiful-watercolor-floral-leaves-background-free-vector.jpg') center/cover no-repeat;
+      opacity: 0.3; z-index: 0;
+    }
+
+    .leaf {
+      position: absolute; width: 50px; height: 50px;
+      background: url('https://static.vecteezy.com/system/resources/thumbnails/026/775/251/small_2x/watercolor-natural-leaf-ai-generative-free-png.png') no-repeat center/contain;
+      animation: fall 10s linear infinite; opacity: 0;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+      5% { opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .content {
+      position: relative; z-index: 1;
+      padding: 2rem; background: #ffefd0; max-width: 800px;
+      margin: 50px auto; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    html, body {
+      height: 100%; background-color: #FCE4B3; color: #000; font-family: serif;
+      display: flex; flex-direction: column; min-height: 100vh;
+      overflow-y: scroll; overflow-x: hidden;
+    }
+
+    body::before {
+      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('assets/leaf.jpg'); background-repeat: repeat; background-size: 300px;
+      opacity: 0.15; z-index: -2; filter: saturate(0.7) contrast(1.1);
+    }
+
+    nav {
+      background-color: #ABAA8B; padding: 1rem 0; text-align: center;
+    }
+
+    nav a {
+      color: #3a2a21; font-weight: 600; font-size: 1.125rem; margin: 0 1rem; text-decoration: none; transition: color 0.3s ease;
+    }
+
+    nav a:hover { color: #18392B; }
+
+    main {
+      flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 2rem; text-align: center;
+    }
+
+    main h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+    main h2 { margin-top: 2rem; margin-bottom: 1rem; }
+    dl { text-align: left; line-height: 1.7; }
+    dt { margin-top: 1rem; font-weight: bold; }
+    dd { margin: 0 0 1rem 1rem; }
+
+    ul { text-align: left; line-height: 1.7; margin: 0 auto; max-width: 600px; }
+
+    footer { background-color: #3a2a21; color: #ccc; font-size: 0.875rem; text-align: center; padding: 1rem 0; }
+
+    @media (max-width: 768px) {
+      nav a { display: inline; margin: 0 0.5rem; font-size: 1.25rem; }
+      main h1 { font-size: 2.2rem; }
+      main h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="leaf" style="left: 20%; animation-delay: 0s;"></div>
+  <div class="leaf" style="left: 40%; animation-delay: 3s;"></div>
+  <div class="leaf" style="left: 60%; animation-delay: 6s;"></div>
+  <div class="leaf" style="left: 80%; animation-delay: 1.5s;"></div>
+
+  <div class="background-overlay"></div>
+
+  <div class="content">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="rsvp.html">RSVP</a>
+      <a href="details.html">Details</a>
+      <a href="registry.html">Registry</a>
+    </nav>
+
+    <main>
+      <h1>Wedding Details & FAQs</h1>
+      <h2>Frequently Asked Questions</h2>
+
+      <dl>
+        <dt>Q. Can I bring a plus one?</dt>
+        <dd>A. Due to space and budget limits, plus-ones are by invitation only — thank you for understanding!</dd>
+
+        <dt>Q. Can I post photos of the wedding?</dt>
+        <dd>A. Feel free to share your own photos, but please don’t post pictures of children without permission. We’d appreciate it if our daughter isn’t shared online.</dd>
+
+        <dt>Q. When should I RSVP by?</dt>
+        <dd>A. Please RSVP by September 25, 2025, so we can prepare for your arrival.</dd>
+
+        <dt>Q. Is the wedding indoors or outdoors?</dt>
+        <dd>A. The venue has both indoor and outdoor spaces, but most of the event will be indoors. Guests may choose where they’d like to be.</dd>
+
+        <dt>Q. What’s the dress code?</dt>
+        <dd>A. We request formal attire. Please avoid wearing green or white.</dd>
+
+        <dt>Q. Will there be parking?</dt>
+        <dd>A. Yes! Free parking is available at the venue.</dd>
+
+        <dt>Q. What if I have dietary restrictions?</dt>
+        <dd>A. Please let us know in your RSVP so we can accommodate you.</dd>
+
+        <dt>Q. Do you have a gift registry?</dt>
+        <dd>A. Yes! Please visit our <a href="registry.html">registry page</a> for details.</dd>
+      </dl>
+
+      <h2>Miscellaneous Information</h2>
+      <ul>
+        <li>No iPads or tablets, please.</li>
+        <li>Kids’ table will have toys and activities. Children will also play an active role in the ceremony!</li>
+      </ul>
+    </main>
+  </div>
+</body>
+</html>
