@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Registry</title>
   <link rel="icon" href="assets/figaro.png" type="image/png">
+
   <style>
     /* Animations */
     @keyframes fadeIn {
@@ -20,13 +21,10 @@
 
     .animate-fadeIn {
       animation: fadeIn 1s ease forwards;
-      opacity: 0; /* start hidden */
+      opacity: 0;
     }
 
     .delay-300 { animation-delay: 0.3s; }
-    .delay-600 { animation-delay: 0.6s; }
-    .delay-900 { animation-delay: 0.9s; }
-    .delay-1200 { animation-delay: 1.2s; }
 
     /* Reset & Base Styles */
     * {
@@ -52,7 +50,7 @@
       height: 50px;
       background: url('https://static.vecteezy.com/system/resources/thumbnails/026/775/251/small_2x/watercolor-natural-leaf-ai-generative-free-png.png') no-repeat center/contain;
       animation: fall 10s linear infinite;
-      opacity: 0; /* hidden by default */
+      opacity: 0;
     }
     
     @keyframes fall {
@@ -82,8 +80,8 @@
 
     html, body {
       height: 100%;
-      background-color: #FCE4B3; /* beige */
-      color: #000000; /* black */
+      background-color: #FCE4B3;
+      color: #000000;
       font-family: serif;
       display: flex;
       flex-direction: column;
@@ -123,7 +121,7 @@
     }
 
     nav a:hover {
-      color: #18392B; /* green hover */
+      color: #18392B;
     }
 
     main {
@@ -156,19 +154,17 @@
       margin-bottom: 2rem;
     }
 
-    /* Remove default list styles and spacing for all ordered lists */
+    /* List styling */
     ol {
       list-style: none;
       padding: 0;
       margin: 0;
     }
     
-    /* Style all list items */
     li {
       margin: 1.5rem 0;
     }
     
-    /* Structure: each li wraps an image and text stacked vertically */
     li > img,
     li > a > img {
       display: block;
@@ -176,14 +172,13 @@
       margin: 0 auto;
     }
     
-    /* Text under the image */
     li p {
       text-align: center;
       margin-top: 0.5rem;
       font-size: 1.2rem;
     }
 
-    /* ✅ Responsive adjustments */
+    /* Responsive */
     @media (max-width: 768px) {
       nav a {
         display: inline;
@@ -202,17 +197,15 @@
       main img {
         max-height: 30vh;
       }
-
-      #countdown {
-        font-size: 1.5rem;
-      }
     }
 
-    /* === Registry Link Circle & "Click Here" Styling === */
+    /* === RED MARKER SCRIBBLE AROUND "REGISTRY" === */
     .registry-link-container {
       position: relative;
       display: inline-block;
-      margin: 0 8px;
+      margin: 0 6px;
+      transform: rotate(-1deg);
+      transition: transform 0.2s ease;
     }
 
     #registry-link {
@@ -222,83 +215,93 @@
       position: relative;
       z-index: 2;
       font-weight: bold;
-      transition: color 0.3s ease;
     }
 
-    #registry-link:hover {
-      color: #18392B;
-    }
-
-    /* Circle around the link */
     #registry-link::before {
       content: '';
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 105%;
-      height: 105%;
-      border: 2px solid #D4A59A;
+      width: 110%;
+      height: 110%;
+      border: 3px solid #FF0000;
       border-radius: 50%;
-      box-shadow: 
-        0 0 0 2px rgba(255, 255, 255, 0.8),
-        0 0 8px rgba(212, 165, 154, 0.5);
       z-index: -1;
-      animation: pulse 2s infinite alternate;
+      filter: blur(0.5px);
+      box-shadow: 
+        0 0 3px rgba(255, 0, 0, 0.5),
+        inset 0 0 2px rgba(255, 0, 0, 0.3);
+      opacity: 0.9;
     }
 
-    @keyframes pulse {
-      0% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(-50%, -50%) scale(1.05);
-        opacity: 0.9;
-      }
-    }
-
-    /* "Click here" text */
     .click-here {
-      font-size: 0.9rem;
-      font-style: italic;
-      color: #D47A6B;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #D00000;
+      background: #fff8f8;
+      padding: 2px 6px;
+      border-radius: 4px;
       margin-left: 8px;
+      border: 1px solid #ffbaba;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      white-space: nowrap;
       opacity: 0;
-      animation: fadeInUp 0.6s ease forwards;
-      animation-delay: 1.4s;
-      display: inline-block;
+      animation: popIn 0.5s ease forwards;
+      animation-delay: 1.3s;
     }
 
-    @keyframes fadeInUp {
+    @keyframes popIn {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: scale(0.8);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1);
       }
     }
 
-    .registry-link-container:hover #registry-link::before {
-      border-color: #C06F5E;
-      animation-duration: 1s;
+    .registry-link-container:hover {
+      transform: rotate(-2deg) scale(1.02);
     }
 
     .registry-link-container:hover .click-here {
-      color: #C06F5E;
+      background: #ffecec;
+      border-color: #ffcccc;
+    }
+
+    /* PayPal Button Fix */
+    .pp-NMCNDL3H4DK4C {
+      text-align: center;
+      border: none;
+      border-radius: 0.25rem;
+      min-width: 11.625rem;
+      padding: 0 2rem;
+      height: 2.625rem;
+      font-weight: bold;
+      background-color: #FFD140;
+      color: #000000;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.25rem;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
+  <!-- Background overlay -->
   <div class="background-overlay"></div>
+
+  <!-- Floating leaves -->
   <div class="leaf" style="left: 20%; animation-delay: 0s;"></div>
   <div class="leaf" style="left: 40%; animation-delay: 3s;"></div>
   <div class="leaf" style="left: 60%; animation-delay: 6s;"></div>
   <div class="leaf" style="left: 80%; animation-delay: 1.5s;"></div>
 
+  <!-- Main content -->
   <div class="content">
     <nav>
       <a href="index.html">Home</a>
@@ -310,30 +313,14 @@
     <main>
       <h1 style="margin-bottom: 40px;" class="animate-fadeIn">For those who are unsure what to get from the gift ideas:</h1>
       
-      <style>
-        .pp-NMCNDL3H4DK4C {
-          text-align: center;
-          border: none;
-          border-radius: 0.25rem;
-          min-width: 11.625rem;
-          padding: 0 2rem;
-          height: 2.625rem;
-          font-weight: bold;
-          background-color: #FFD140;
-          color: #000000;
-          font-family: "Helvetica Neue", Arial, sans-serif;
-          font-size: 1rem;
-          line-height: 1.25rem;
-          cursor: pointer;
-        }
-      </style>
+      <!-- PayPal Registry Fund Button -->
       <form action="https://www.paypal.com/ncp/payment/NMCNDL3H4DK4C" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
         <input class="pp-NMCNDL3H4DK4C" type="submit" value="Registry Fund" />
         <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
         <section style="font-size: 0.75rem;"></section>
       </form>
       
-      <!-- Updated line with circle and "Click here" -->
+      <!-- Registry Link with Red Marker Circle + "Click here" -->
       <h1 class="animate-fadeIn">
         Gift Ideas from the 
         <span class="registry-link-container">
@@ -344,6 +331,7 @@
         </span>:
       </h1>
 
+      <!-- Gift List -->
       <ol>
         <li>
           <a href="https://www.amazon.com/Ninja-DoubleStack-2-Basket-Compact-Renewed/dp/B0DQYQCGGJ?colid=1GN45H9T35Y8J&coliid=I1OB8VTBNBR6HG&sbo=GW1QB%2BmqAsHTPf1jTZRSDA%3D%3D" target="_blank">
